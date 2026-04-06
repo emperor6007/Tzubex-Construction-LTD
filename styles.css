@@ -141,8 +141,8 @@ input, select, textarea { font-family: inherit; }
   background: rgba(244,241,234,0.92);
 }
 .nav-container {
-  max-width: 1300px; margin: 0 auto; padding: 0 24px;
-  width: 100%; display: flex; align-items: center; gap: 32px;
+  max-width: 1300px; margin: 0 auto; padding: 0 16px;
+  width: 100%; display: flex; align-items: center; gap: 8px;
 }
 .nav-logo {
   display: flex; align-items: center; gap: 8px; font-weight: 700;
@@ -161,20 +161,23 @@ input, select, textarea { font-family: inherit; }
 .nav-link:hover, .nav-link.active {
   color: var(--text-primary); background: var(--border-subtle);
 }
-.nav-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.nav-actions {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+  margin-left: auto;
+}
 .theme-toggle {
-  width: 36px; height: 36px; border-radius: 8px;
+  width: 34px; height: 34px; border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   background: var(--surface); border: 1px solid var(--border-subtle);
   color: var(--text-secondary); font-size: 1.1rem;
-  transition: all var(--transition);
+  transition: all var(--transition); flex-shrink: 0;
 }
 .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
 .nav-cta { display: none; }
 @media (min-width: 900px) { .nav-cta { display: inline-flex; } }
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
-  padding: 8px; border-radius: 8px;
+  padding: 8px; border-radius: 8px; flex-shrink: 0;
   background: var(--surface); border: 1px solid var(--border-subtle);
 }
 .hamburger span {
@@ -186,6 +189,7 @@ input, select, textarea { font-family: inherit; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 900px) {
+  .nav-container { gap: 0; padding: 0 12px; }
   .nav-links {
     position: fixed; top: var(--nav-h); left: 0; right: 0;
     background: var(--bg-2); flex-direction: column; gap: 0;
@@ -196,6 +200,7 @@ input, select, textarea { font-family: inherit; }
   .nav-links.open { transform: translateY(0); }
   .nav-link { padding: 14px 16px; display: block; border-radius: 8px; }
   .hamburger { display: flex; }
+  .nav-actions { margin-left: auto; gap: 6px; }
 }
 
 /* ============================================================
