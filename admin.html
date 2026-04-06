@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TZUBEX CONSTRUCTION LTD Admin — Dashboard</title>
+  <link rel="icon" type="image/jpeg" href="tzubex.jpeg" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══ LOGIN SCREEN ═══ -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-bg">
+      <div class="login-orb login-orb-1"></div>
+      <div class="login-orb login-orb-2"></div>
+      <div class="login-grid"></div>
+    </div>
+    <div class="login-card">
+      <div class="login-logo"><img src="tzubex.jpeg" alt="Tzubex Construction Ltd" class="site-logo-img login-logo-img" style="width:72px;height:72px;max-width:72px;max-height:72px;object-fit:contain;border-radius:50%;" /><span class="logo-text">TZUBEX CONSTRUCTION LTD</span></div>
+      <div class="login-title-wrap">
+        <h1>Admin Portal</h1>
+        <p>Sign in to access the dashboard</p>
+      </div>
+      <form class="login-form" id="loginForm" novalidate>
+        <div class="lform-group">
+          <label for="loginUser">Username</label>
+          <input type="text" id="loginUser" placeholder="admin" autocomplete="username" />
+          <span class="lerror" id="loginUserError"></span>
+        </div>
+        <div class="lform-group">
+          <label for="loginPass">Password</label>
+          <div class="pass-wrap">
+            <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" class="pass-toggle" id="passToggle" aria-label="Show/hide password">👁</button>
+          </div>
+          <span class="lerror" id="loginPassError"></span>
+        </div>
+        <div class="login-error a-hidden" id="loginError">Invalid username or password. Please try again.</div>
+        <button type="submit" class="btn-login" id="loginBtn">
+          <span id="loginBtnText">Sign In</span>
+          <span id="loginBtnSpinner" class="a-hidden">Verifying…</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ ADMIN APP ═══ -->
+  <div class="admin-app a-hidden" id="adminApp">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a class="sidebar-logo" href="#"><img src="tzubex.jpeg" alt="Tzubex Construction Ltd" class="site-logo-img" style="width:36px;height:36px;max-width:36px;max-height:36px;object-fit:contain;border-radius:50%;flex-shrink:0;" /><span class="logo-text">TZUBEX CONSTRUCTION LTD</span></a>
+        <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close sidebar">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <span class="nav-group-label">Overview</span>
+        <button class="snav-item active" data-view="dashboard" type="button"><span class="snav-icon">⊞</span> Dashboard</button>
+        <span class="nav-group-label">Catalogue</span>
+        <button class="snav-item" data-view="designs" type="button"><span class="snav-icon">◧</span> Designs</button>
+        <button class="snav-item" data-view="add-design" type="button"><span class="snav-icon">⊕</span> Add New Design</button>
+        <span class="nav-group-label">Inbox</span>
+        <button class="snav-item" data-view="requests" type="button">
+          <span class="snav-icon">◫</span> Plan Requests
+          <span class="snav-badge" id="reqBadge">0</span>
+        </button>
+        <button class="snav-item" data-view="messages" type="button">
+          <span class="snav-icon">◻</span> Messages
+          <span class="snav-badge" id="msgBadge">0</span>
+        </button>
+        <span class="nav-group-label">System</span>
+        <button class="snav-item" data-view="settings" type="button"><span class="snav-icon">◎</span> Settings</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="admin-user">
+          <div class="admin-avatar">A</div>
+          <div class="admin-info"><strong>Admin</strong><small>tzubex.ng</small></div>
+        </div>
+        <button class="btn-logout" id="logoutBtn" type="button" title="Sign out">⏻</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="admin-main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <button class="topbar-menu" id="topbarMenu" type="button" aria-label="Toggle sidebar">☰</button>
+        <div class="topbar-breadcrumb" id="topbarBreadcrumb">Dashboard</div>
+        <div class="topbar-actions">
+          <!-- #adminThemeToggle — click listener in admin.js -->
+          <button class="theme-toggle" id="adminThemeToggle" type="button" aria-label="Toggle theme">◑</button>
+          <a href="index.html" class="btn-view-site" target="_blank" rel="noopener">↗ View Site</a>
+        </div>
+      </header>
+
+      <!-- VIEWS -->
+      <div class="views-container">
+
+        <!-- ── DASHBOARD ── -->
+        <section class="view active" id="view-dashboard">
+          <div class="view-header">
+            <div><h2 class="view-title">Dashboard</h2><p class="view-subtitle">Welcome back. Here's what's happening today.</p></div>
+            <button class="btn btn-ghost btn-sm" id="dashRefreshBtn" type="button">↻ Refresh</button>
+          </div>
+          <div class="stats-grid" id="statsGrid">
+            <div class="stat-card"><div class="stat-card-icon" style="background:rgba(201,168,76,.15);color:var(--gold)">◧</div><div class="stat-card-body"><span class="stat-card-label">Total Designs</span><span class="stat-card-value" id="statDesigns">0</span></div></div>
+            <div class="stat-card"><div class="stat-card-icon" style="background:rgba(80,160,220,.15);color:#50A0DC">◫</div><div class="stat-card-body"><span class="stat-card-label">Plan Requests</span><span class="stat-card-value" id="statRequests">0</span></div></div>
+            <div class="stat-card"><div class="stat-card-icon" style="background:rgba(100,200,140,.15);color:#64C88C">◻</div><div class="stat-card-body"><span class="stat-card-label">Messages</span><span class="stat-card-value" id="statMessages">0</span></div></div>
+            <div class="stat-card"><div class="stat-card-icon" style="background:rgba(220,100,100,.15);color:#DC6464">♥</div><div class="stat-card-body"><span class="stat-card-label">Saved Designs</span><span class="stat-card-value" id="statSaved">0</span></div></div>
+          </div>
+          <div class="dash-grid">
+            <div class="dash-card">
+              <div class="dash-card-header"><h3>Recent Requests</h3><button class="link-btn" data-view="requests" type="button">View all →</button></div>
+              <div class="recent-list" id="dashRecentReq"><div class="empty-state">No requests yet.</div></div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-header"><h3>Recent Messages</h3><button class="link-btn" data-view="messages" type="button">View all →</button></div>
+              <div class="recent-list" id="dashRecentMsg"><div class="empty-state">No messages yet.</div></div>
+            </div>
+          </div>
+          <div class="dash-card full-width" style="margin-top:24px">
+            <div class="dash-card-header"><h3>Design Catalogue Breakdown</h3></div>
+            <div class="type-breakdown" id="typeBreakdown"></div>
+          </div>
+        </section>
+
+        <!-- ── DESIGNS TABLE ── -->
+        <section class="view" id="view-designs">
+          <div class="view-header">
+            <div><h2 class="view-title">Design Catalogue</h2><p class="view-subtitle">Manage all architectural designs and plans.</p></div>
+            <button class="btn btn-primary" data-view="add-design" type="button">+ Add New Design</button>
+          </div>
+          <div class="table-toolbar">
+            <input type="text"  class="table-search" id="designTableSearch" placeholder="Search designs…" autocomplete="off" />
+            <select class="table-select" id="designTableFilter">
+              <option value="">All Types</option>
+              <option value="bungalow">Bungalow</option>
+              <option value="duplex">Duplex</option>
+              <option value="apartment">Apartment</option>
+              <option value="villa">Villa</option>
+              <option value="commercial">Commercial</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="designsTable">
+              <thead><tr><th>Preview</th><th>Title</th><th>Type</th><th>Price</th><th>Beds</th><th>Area</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="designsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── ADD / EDIT DESIGN ── -->
+        <section class="view" id="view-add-design">
+          <div class="view-header">
+            <div><h2 class="view-title" id="designFormTitle">Add New Design</h2><p class="view-subtitle">Fill in all details for the architectural plan.</p></div>
+            <button class="btn btn-ghost" data-view="designs" type="button">← Back to Designs</button>
+          </div>
+          <form class="design-form" id="designForm" novalidate>
+            <input type="hidden" id="designEditId" value="" />
+
+            <div class="form-section">
+              <h3 class="form-section-title">Basic Information</h3>
+              <div class="form-grid-2">
+                <div class="fg"><label for="df-title">Design Title *</label><input type="text" id="df-title" placeholder="e.g. The Savannah Retreat" /><span class="fe" id="df-title-err"></span></div>
+                <div class="fg"><label for="df-type">Design Type *</label><select id="df-type"><option value="">Select type</option><option value="bungalow">Bungalow</option><option value="duplex">Duplex</option><option value="apartment">Apartment</option><option value="villa">Villa</option><option value="commercial">Commercial</option></select><span class="fe" id="df-type-err"></span></div>
+                <div class="fg"><label for="df-price">Display Price *</label><input type="text" id="df-price" placeholder="e.g. ₦18,500,000" /><span class="fe" id="df-price-err"></span></div>
+                <div class="fg"><label for="df-budget">Budget Category *</label><select id="df-budget"><option value="">Select budget range</option><option value="budget">Budget (Under ₦20M)</option><option value="mid">Mid-range (₦20M–₦50M)</option><option value="luxury">Luxury (₦50M+)</option></select><span class="fe" id="df-budget-err"></span></div>
+              </div>
+              <div class="fg"><label for="df-desc">Short Description *</label><input type="text" id="df-desc" placeholder="Brief summary shown on gallery card (1–2 sentences)" /><span class="fe" id="df-desc-err"></span></div>
+              <div class="fg" style="margin-top:14px"><label for="df-fullDesc">Full Description *</label><textarea id="df-fullDesc" rows="4" placeholder="Detailed description shown in the design modal…"></textarea><span class="fe" id="df-fullDesc-err"></span></div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Specifications</h3>
+              <div class="form-grid-4">
+                <div class="fg"><label for="df-beds">Bedrooms *</label><input type="text" id="df-beds" placeholder="e.g. 3 or 2–4" /><span class="fe" id="df-beds-err"></span></div>
+                <div class="fg"><label for="df-baths">Bathrooms *</label><input type="text" id="df-baths" placeholder="e.g. 2" /><span class="fe" id="df-baths-err"></span></div>
+                <div class="fg"><label for="df-area">Total Area *</label><input type="text" id="df-area" placeholder="e.g. 210 m²" /><span class="fe" id="df-area-err"></span></div>
+                <div class="fg"><label for="df-floors">Floors *</label><input type="text" id="df-floors" placeholder="e.g. 2" /><span class="fe" id="df-floors-err"></span></div>
+              </div>
+              <div class="fg"><label for="df-floorPlan">Floor Plan Overview</label><textarea id="df-floorPlan" rows="2" placeholder="e.g. Ground: Living, kitchen, 2 beds | Upper: 2 beds, master bath"></textarea></div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Images</h3>
+              <p class="form-hint">Add up to 5 images. Use URLs or upload files directly. First image is the gallery thumbnail.</p>
+              <div class="img-input-tabs">
+                <button type="button" class="img-tab-btn active" id="tabUrlMode" data-mode="url">🔗 Image URLs</button>
+                <button type="button" class="img-tab-btn" id="tabUploadMode" data-mode="upload">📁 Upload Files</button>
+              </div>
+              <div id="urlModePanel">
+                <div id="imageUrlInputs"></div>
+                <button type="button" class="btn btn-ghost btn-sm" id="addImageUrl">+ Add Another Image URL</button>
+              </div>
+              <div id="uploadModePanel" class="a-hidden">
+                <div class="upload-drop-zone" id="uploadDropZone">
+                  <div class="upload-drop-inner">
+                    <span class="upload-icon">🖼</span>
+                    <p>Drag &amp; drop images here, or <label for="imageFileInput" class="upload-browse-link">browse files</label></p>
+                    <p class="form-hint" style="margin-bottom:0">PNG, JPG, WEBP — max 2MB each, up to 5 images</p>
+                  </div>
+                  <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none" />
+                </div>
+                <div id="uploadedImagePreviews" class="uploaded-previews"></div>
+              </div>
+              <span class="fe" id="df-images-err"></span>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Key Features</h3>
+              <p class="form-hint">One feature per line.</p>
+              <div class="fg"><textarea id="df-features" rows="5" placeholder="Open-plan living room&#10;Master suite with walk-in wardrobe&#10;Wrap-around veranda"></textarea><span class="fe" id="df-features-err"></span></div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Visibility</h3>
+              <label class="toggle-label">
+                <input type="checkbox" id="df-published" checked />
+                <span class="toggle-track"></span>
+                <span>Published (visible on main site)</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="designFormSubmit">Save Design</button>
+              <button type="button" class="btn btn-ghost" data-view="designs">Cancel</button>
+              <button type="button" class="btn btn-danger a-hidden" id="deleteDesignBtn">Delete Design</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ── PLAN REQUESTS ── -->
+        <section class="view" id="view-requests">
+          <div class="view-header">
+            <div><h2 class="view-title">Plan Requests</h2><p class="view-subtitle">All project requests submitted through the website.</p></div>
+            <div class="view-header-actions">
+              <button class="btn btn-ghost btn-sm" id="refreshRequests" type="button">↻ Refresh</button>
+              <button class="btn btn-ghost btn-sm" id="exportRequests"  type="button">↓ Export CSV</button>
+              <button class="btn btn-ghost btn-sm" id="clearRequests"   type="button">🗑 Clear All</button>
+            </div>
+          </div>
+          <div class="table-toolbar">
+            <input type="text" class="table-search" id="reqSearch" placeholder="Search by name, email, project type…" autocomplete="off" />
+            <select class="table-select" id="reqStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="new">New</option>
+              <option value="reviewing">Reviewing</option>
+              <option value="contacted">Contacted</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Project</th><th>Design</th><th>Budget</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="requestsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="empty-table-state a-hidden" id="reqEmpty"><span>📭</span><p>No plan requests yet. Submissions from the main site will appear here.</p></div>
+        </section>
+
+        <!-- ── MESSAGES ── -->
+        <section class="view" id="view-messages">
+          <div class="view-header">
+            <div><h2 class="view-title">Contact Messages</h2><p class="view-subtitle">Feedback and enquiries from visitors.</p></div>
+            <div class="view-header-actions">
+              <button class="btn btn-ghost btn-sm" id="refreshMessages" type="button">↻ Refresh</button>
+              <button class="btn btn-ghost btn-sm" id="exportMessages"  type="button">↓ Export CSV</button>
+              <button class="btn btn-ghost btn-sm" id="clearMessages"   type="button">🗑 Clear All</button>
+            </div>
+          </div>
+          <div class="table-toolbar">
+            <input type="text" class="table-search" id="msgSearch" placeholder="Search by name or email…" autocomplete="off" />
+            <select class="table-select" id="msgStatusFilter">
+              <option value="">All</option>
+              <option value="unread">Unread</option>
+              <option value="read">Read</option>
+              <option value="replied">Replied</option>
+            </select>
+          </div>
+          <div class="messages-list" id="messagesList"></div>
+          <div class="empty-table-state a-hidden" id="msgEmpty"><span>💬</span><p>No messages yet. Contact form submissions will appear here.</p></div>
+        </section>
+
+        <!-- ── SETTINGS ── -->
+        <section class="view" id="view-settings">
+          <div class="view-header"><h2 class="view-title">Settings</h2><p class="view-subtitle">Manage your admin account and preferences.</p></div>
+          <div class="settings-grid">
+            <div class="settings-card">
+              <h3>Change Password</h3>
+              <form class="settings-form" id="changePassForm" novalidate>
+                <div class="fg"><label for="curPass">Current Password</label><input type="password" id="curPass" placeholder="••••••••" autocomplete="current-password" /></div>
+                <div class="fg"><label for="newPass">New Password</label><input type="password" id="newPass" placeholder="••••••••" autocomplete="new-password" /></div>
+                <div class="fg"><label for="confirmPass">Confirm New Password</label><input type="password" id="confirmPass" placeholder="••••••••" autocomplete="new-password" /></div>
+                <div class="settings-error  a-hidden" id="passChangeError"></div>
+                <div class="settings-success a-hidden" id="passChangeSuccess">✓ Password updated successfully!</div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+              </form>
+            </div>
+            <div class="settings-card">
+              <h3>Appearance</h3>
+              <div class="settings-row">
+                <span>Dark Mode</span>
+                <!-- #settingsTheme checkbox — synced with adminThemeToggle in admin.js -->
+                <label class="toggle-label"><input type="checkbox" id="settingsTheme" /><span class="toggle-track"></span></label>
+              </div>
+              <div class="settings-row" style="margin-top:20px">
+                <span>Compact Sidebar</span>
+                <label class="toggle-label"><input type="checkbox" id="compactSidebar" /><span class="toggle-track"></span></label>
+              </div>
+            </div>
+            <div class="settings-card">
+              <h3>Data Management</h3>
+              <p style="font-size:.85rem;color:var(--text-s);margin-bottom:16px">Manage locally stored data for this admin session.</p>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <button class="btn btn-ghost btn-sm" id="exportAllData" type="button">↓ Export All Data (JSON)</button>
+                <button class="btn btn-danger btn-sm" id="nukeData"     type="button">⚠ Reset All Demo Data</button>
+              </div>
+            </div>
+            <div class="settings-card">
+              <h3>About</h3>
+              <p style="font-size:.85rem;color:var(--text-s);line-height:1.7"><strong>TZUBEX CONSTRUCTION LTD Admin Panel v3.0</strong><br/>Construction &amp; Design Management System<br/>Built with vanilla HTML, CSS &amp; JavaScript.<br/><br/>© 2024 TZUBEX CONSTRUCTION LTD. All rights reserved.</p>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /views-container -->
+    </div><!-- /admin-main -->
+  </div><!-- /admin-app -->
+
+  <!-- ═══ REQUEST DETAIL MODAL ═══
+       Uses class 'a-hidden' (not 'hidden') so admin.js can toggle it
+       without conflicting with styles.css .hidden rule.
+  ═══════════════════════════════ -->
+  <div class="amodal-overlay a-hidden" id="reqDetailOverlay" role="dialog" aria-modal="true">
+    <div class="amodal">
+      <div class="amodal-header">
+        <h3>Request Details</h3>
+        <button class="amodal-close" id="reqDetailClose" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="amodal-body" id="reqDetailBody"></div>
+      <div class="amodal-footer">
+        <select class="table-select" id="reqStatusChange">
+          <option value="new">New</option>
+          <option value="reviewing">Reviewing</option>
+          <option value="contacted">Contacted</option>
+          <option value="closed">Closed</option>
+        </select>
+        <button class="btn btn-primary btn-sm" id="reqStatusSave"    type="button">Save Status</button>
+        <button class="btn btn-ghost   btn-sm" id="reqDetailCloseBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MESSAGE DETAIL MODAL ═══ -->
+  <div class="amodal-overlay a-hidden" id="msgDetailOverlay" role="dialog" aria-modal="true">
+    <div class="amodal">
+      <div class="amodal-header">
+        <h3>Message Details</h3>
+        <button class="amodal-close" id="msgDetailClose" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="amodal-body" id="msgDetailBody"></div>
+      <div class="amodal-footer">
+        <select class="table-select" id="msgStatusChange">
+          <option value="unread">Unread</option>
+          <option value="read">Read</option>
+          <option value="replied">Replied</option>
+        </select>
+        <button class="btn btn-primary btn-sm" id="msgStatusSave"    type="button">Save Status</button>
+        <button class="btn btn-ghost   btn-sm" id="msgDetailCloseBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CONFIRM MODAL ═══ -->
+  <div class="amodal-overlay a-hidden" id="confirmOverlay" role="alertdialog" aria-modal="true">
+    <div class="amodal amodal-sm">
+      <div class="amodal-header">
+        <h3 id="confirmTitle">Confirm Action</h3>
+        <button class="amodal-close" id="confirmClose" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="amodal-body"><p id="confirmMsg" style="color:var(--text-s);font-size:.9rem;line-height:1.6"></p></div>
+      <div class="amodal-footer">
+        <button class="btn btn-danger btn-sm" id="confirmOk"     type="button">Confirm</button>
+        <button class="btn btn-ghost  btn-sm" id="confirmCancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TOAST CONTAINER ═══ -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

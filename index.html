@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TZUBEX CONSTRUCTION LTD | Building Construction &amp; Design</title>
+  <link rel="icon" type="image/jpeg" href="tzubex.jpeg" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo"><img src="tzubex.jpeg" alt="Tzubex Construction Ltd" class="site-logo-img" style="width:40px;height:40px;max-width:40px;max-height:40px;object-fit:contain;border-radius:50%;flex-shrink:0;" /><span class="logo-text">TZUBEX CONSTRUCTION LTD</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"    class="nav-link active">Home</a></li>
+        <li><a href="#gallery" class="nav-link">Designs</a></li>
+        <li><a href="#about"   class="nav-link">About</a></li>
+        <li><a href="#request" class="nav-link">Request Plan</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <!-- #themeToggle → click listener in script.js | #themeIcon → icon text swapped in script.js -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">◑</span>
+        </button>
+        <a href="#request" class="btn btn-primary nav-cta">Get a Quote</a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="eyebrow-line"></span><span>Premium Construction &amp; Architecture</span><span class="eyebrow-line"></span></div>
+      <h1 class="hero-title">
+        <span class="hero-title-line">Design Your</span>
+        <span class="hero-title-line accent">Dream</span>
+        <span class="hero-title-line">Building</span>
+      </h1>
+      <p class="hero-subtitle">From architectural blueprints to finished structures — we transform your vision into extraordinary spaces that stand the test of time.</p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-primary btn-lg">Browse Designs</a>
+        <a href="#request" class="btn btn-ghost  btn-lg">Get a Quote →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">850+</span><span class="stat-label">Projects Completed</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">24</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">99%</span><span class="stat-label">Client Satisfaction</span></div>
+      </div>
+    </div>
+    <div class="hero-image-panel">
+      <div class="hero-img-stack">
+        <div class="hero-img hero-img-main"      style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80')"></div>
+        <div class="hero-img hero-img-secondary" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80')"></div>
+        
+      </div>
+    </div>
+    <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- SERVICES MARQUEE -->
+  <section class="services-band">
+    <div class="services-band-inner">
+      <div class="service-pill">🏠 Residential Design</div>
+      <div class="service-pill">🏢 Commercial Spaces</div>
+      <div class="service-pill">📐 Architectural Plans</div>
+      <div class="service-pill">🔧 Structural Engineering</div>
+      <div class="service-pill">🌳 Landscape Integration</div>
+      <div class="service-pill">♻️ Sustainable Builds</div>
+      <div class="service-pill">🏠 Residential Design</div>
+      <div class="service-pill">🏢 Commercial Spaces</div>
+      <div class="service-pill">📐 Architectural Plans</div>
+      <div class="service-pill">🔧 Structural Engineering</div>
+      <div class="service-pill">🌳 Landscape Integration</div>
+      <div class="service-pill">♻️ Sustainable Builds</div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Portfolio</span>
+        <h2 class="section-title">Explore Design Collections</h2>
+        <p class="section-subtitle">Browse our curated collection of architectural masterpieces crafted for every lifestyle and business need.</p>
+      </div>
+      <div class="filter-bar">
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search designs, styles, features…" autocomplete="off" />
+        </div>
+        <div class="filter-group">
+          <button class="filter-btn active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="bungalow">Bungalow</button>
+          <button class="filter-btn" type="button" data-filter="duplex">Duplex</button>
+          <button class="filter-btn" type="button" data-filter="apartment">Apartment</button>
+          <button class="filter-btn" type="button" data-filter="commercial">Commercial</button>
+          <button class="filter-btn" type="button" data-filter="villa">Villa</button>
+        </div>
+        <div class="filter-selects">
+          <select class="filter-select" id="budgetFilter">
+            <option value="">Budget Range</option>
+            <option value="budget">Under ₦20M</option>
+            <option value="mid">₦20M – ₦50M</option>
+            <option value="luxury">₦50M+</option>
+          </select>
+          <select class="filter-select" id="bedroomFilter">
+            <option value="">Bedrooms</option>
+            <option value="1">1–2 Beds</option>
+            <option value="3">3–4 Beds</option>
+            <option value="5">5+ Beds</option>
+          </select>
+        </div>
+      </div>
+      <div class="design-grid" id="designGrid"></div>
+      <div class="no-results hidden" id="noResults">
+        <span class="no-results-icon">🔍</span>
+        <p>No designs match your filters. Try adjusting your search.</p>
+        <button class="btn btn-ghost" type="button" onclick="resetFilters()">Reset Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-img-main"  style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80')"></div>
+          <div class="about-img-small" style="background-image:url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&q=80')"></div>
+          <div class="about-badge-float"><strong>Since 2001</strong><small>Building Excellence</small></div>
+        </div>
+        <div class="about-content">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">We Build More Than Structures — We Build Legacies</h2>
+          <p class="about-lead">TZUBEX CONSTRUCTION LTD is a premier construction and architectural design firm with two decades of transforming visions into iconic buildings across Nigeria and West Africa.</p>
+          <p class="about-body">Our team of licensed architects, structural engineers, and project managers collaborate to deliver projects that are aesthetically stunning, structurally sound, and built to last generations.</p>
+          <div class="about-pillars">
+            <div class="pillar"><span class="pillar-icon">◎</span><div><strong>Our Mission</strong><p>To redefine the built environment through innovative, sustainable, and client-focused design solutions.</p></div></div>
+            <div class="pillar"><span class="pillar-icon">◈</span><div><strong>Our Vision</strong><p>To be Africa's most trusted architecture and construction brand — building communities, one structure at a time.</p></div></div>
+            <div class="pillar"><span class="pillar-icon">◉</span><div><strong>Our Expertise</strong><p>Residential, commercial, industrial, and mixed-use developments across all scales and budgets.</p></div></div>
+          </div>
+          <a href="#gallery" class="btn btn-primary">Explore Our Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Your Journey to a Dream Build</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-number">01</div><div class="step-content"><h3>Browse &amp; Select</h3><p>Explore our gallery and find a design that resonates with your vision and budget.</p></div></div>
+        <div class="process-connector"></div>
+        <div class="process-step"><div class="step-number">02</div><div class="step-content"><h3>Request &amp; Consult</h3><p>Submit your plan request. Our team contacts you within 24 hours.</p></div></div>
+        <div class="process-connector"></div>
+        <div class="process-step"><div class="step-number">03</div><div class="step-content"><h3>Design &amp; Approve</h3><p>Our architects refine plans to your specifications. Review and approve before groundbreaking.</p></div></div>
+        <div class="process-connector"></div>
+        <div class="process-step"><div class="step-number">04</div><div class="step-content"><h3>Build &amp; Deliver</h3><p>Our certified contractors bring your design to life with regular updates.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUEST FORM -->
+  <section class="request-section" id="request">
+    <div class="container">
+      <div class="request-grid">
+        <div class="request-info">
+          <span class="section-tag">Start Your Project</span>
+          <h2 class="section-title">Request a Design Plan</h2>
+          <p>Fill out the form and our team will prepare a custom proposal tailored to your needs.</p>
+          <ul class="request-benefits">
+            <li><span>✓</span> Free initial consultation</li>
+            <li><span>✓</span> Response within 24 hours</li>
+            <li><span>✓</span> No commitment required</li>
+            <li><span>✓</span> Fully customisable designs</li>
+          </ul>
+          <div class="contact-chips">
+            <a href="tel:+2347035769539"     class="chip">📞 +234 703 576 9539</a>
+            <a href="/cdn-cgi/l/email-protection#721b1c141d32130011141d001f5c1c15" class="chip">✉️ <span class="__cf_email__" data-cfemail="3c55525a537c5d4e5f5a534e5112525b">[email&#160;protected]</span></a>
+          </div>
+        </div>
+        <div class="request-form-wrap">
+          <form class="request-form" id="requestForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text"  id="fullName"    name="fullName"    placeholder="John Adeyemi" autocomplete="name" />
+                <span  class="form-error" id="fullNameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email"       name="email"       placeholder="john@example.com" autocomplete="email" />
+                <span  class="form-error" id="emailError"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel"   id="phone"       name="phone"       placeholder="+234 800 000 0000" autocomplete="tel" />
+                <span  class="form-error" id="phoneError"></span>
+              </div>
+              <div class="form-group">
+                <label for="projectType">Project Type *</label>
+                <select id="projectType" name="projectType">
+                  <option value="">Select project type</option>
+                  <option value="Residential">Residential</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Industrial">Industrial</option>
+                  <option value="Mixed Use">Mixed Use</option>
+                </select>
+                <span class="form-error" id="projectTypeError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="selectedDesign">Selected Design (optional)</label>
+              <select id="selectedDesign" name="selectedDesign">
+                <option value="">Choose from gallery or leave blank</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="budget">Budget Range *</label>
+                <select id="budget" name="budget">
+                  <option value="">Select budget</option>
+                  <option value="Under ₦20 Million">Under ₦20 Million</option>
+                  <option value="₦20M – ₦50M">₦20M – ₦50M</option>
+                  <option value="₦50M – ₦100M">₦50M – ₦100M</option>
+                  <option value="₦100M+">₦100M+</option>
+                </select>
+                <span class="form-error" id="budgetError"></span>
+              </div>
+              <div class="form-group">
+                <label for="timeline">Expected Timeline</label>
+                <select id="timeline" name="timeline">
+                  <option value="">When to start?</option>
+                  <option value="Immediately">Immediately</option>
+                  <option value="Within 3 months">Within 3 months</option>
+                  <option value="Within 6 months">Within 6 months</option>
+                  <option value="Still planning">Still planning</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="requirements">Custom Requirements *</label>
+              <textarea id="requirements" name="requirements" rows="4" placeholder="Describe your vision, specific needs, or questions… (min 20 characters)"></textarea>
+              <span class="form-error" id="requirementsError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <span id="submitText">Submit Request</span>
+              <span id="submitSpinner" class="hidden">Processing…</span>
+            </button>
+          </form>
+          <div class="form-success hidden" id="formSuccess">
+            <div class="success-icon">✓</div>
+            <h3>Request Submitted!</h3>
+            <p>Thank you! Our team will reach out within 24 hours to discuss your project.</p>
+            <button class="btn btn-ghost" type="button" onclick="resetForm()">Submit Another Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-cards">
+          <div class="contact-card"><span class="contact-card-icon">📍</span><h4>Our Office</h4><p>14 Marina Drive, Victoria Island<br/>Lagos, Nigeria</p></div>
+          <div class="contact-card"><span class="contact-card-icon">📞</span><h4>Phone</h4><p>+234 703 576 9539<br/>+234 803 206 8982</p></div>
+          <div class="contact-card"><span class="contact-card-icon">✉️</span><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4821262e2708293a2b2e273a2566262f">[email&#160;protected]</a><br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9bebe9f4f1fef8efe8dbfae9f8fdf4e9f6b5f5fc">[email&#160;protected]</a></p></div>
+          <div class="contact-card"><span class="contact-card-icon">🕐</span><h4>Working Hours</h4><p>Mon–Fri: 8am–6pm<br/>Saturday: 9am–2pm</p></div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="cName">Your Name *</label>
+              <input type="text"  id="cName"    placeholder="Jane Okafor" autocomplete="name" />
+              <span  class="form-error" id="cNameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="cEmail">Email *</label>
+              <input type="email" id="cEmail"   placeholder="jane@email.com" autocomplete="email" />
+              <span  class="form-error" id="cEmailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="cMessage">Message *</label>
+              <textarea id="cMessage" rows="5" placeholder="How can we help you? (min 10 characters)"></textarea>
+              <span class="form-error" id="cMessageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          </form>
+          <div class="contact-success hidden" id="contactSuccess">
+            <div class="success-icon">✓</div>
+            <p>Message sent! We'll get back to you soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo"><img src="tzubex.jpeg" alt="Tzubex Construction Ltd" class="site-logo-img" style="width:40px;height:40px;max-width:40px;max-height:40px;object-fit:contain;border-radius:50%;flex-shrink:0;" /><span class="logo-text">TZUBEX CONSTRUCTION LTD</span></a>
+          <p>Building extraordinary spaces where design meets engineering excellence.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Instagram">in</a>
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">Li</a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="#">Residential Design</a></li><li><a href="#">Commercial Projects</a></li><li><a href="#">Architectural Plans</a></li><li><a href="#">Structural Engineering</a></li></ul></div>
+        <div class="footer-col"><h4>Design Types</h4><ul><li><a href="#">Bungalows</a></li><li><a href="#">Duplex Homes</a></li><li><a href="#">Apartments</a></li><li><a href="#">Luxury Villas</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#request">Request Plan</a></li><li><a href="#contact">Contact</a></li><li><a href="admin.html" style="opacity:.4;font-size:.8rem">⚙ Admin</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 TZUBEX CONSTRUCTION LTD. All rights reserved.</p>
+        <p>Designed with precision. Built with purpose.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DESIGN MODAL -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal" id="designModal">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/2348012345678?text=Hello%20TZUBEX%20CONSTRUCTION%20LTD%2C%20I'm%20interested%20in%20your%20building%20designs."
+     class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12.002 2.002C6.479 2.002 2.002 6.479 2.002 12c0 1.771.463 3.434 1.264 4.888L2 22l5.233-1.237A9.946 9.946 0 0012.002 22c5.523 0 10-4.478 10-10 0-5.523-4.477-10-9.998-10zm0 18.18a8.17 8.17 0 01-4.164-1.14l-.299-.178-3.094.731.784-2.967-.196-.305a8.18 8.18 0 1114.916-4.14 8.18 8.18 0 01-7.947 8z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
