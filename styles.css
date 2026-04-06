@@ -858,3 +858,32 @@ input, select, textarea { font-family: inherit; }
   align-items: center;
   gap: 8px;
 }
+
+/* Logo text stacking */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.logo-line1 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.logo-line2 {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* On larger screens, show inline in one line */
+@media (min-width: 769px) {
+  .logo-text {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+  }
+  .logo-line1 { font-size: 1.5rem; }
+  .logo-line2 { font-size: 1.5rem; opacity: 1; }
+}
