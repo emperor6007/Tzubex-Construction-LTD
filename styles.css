@@ -147,7 +147,7 @@ input, select, textarea { font-family: inherit; }
 .nav-logo {
   display: flex; align-items: center; gap: 8px; font-weight: 700;
   font-family: var(--font-accent); font-size: 1.5rem; letter-spacing: 0.06em;
-  color: var(--text-primary); flex-shrink: 0;
+  color: var(--text-primary); flex-shrink: 0; text-decoration: none;
 }
 .logo-mark { color: var(--gold); font-size: 1.2rem; }
 .nav-links {
@@ -846,8 +846,8 @@ input, select, textarea { font-family: inherit; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 /* ── TZUBEX Logo Image ── */
 .site-logo-img {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
   border-radius: 50%;
   flex-shrink: 0;
@@ -859,31 +859,29 @@ input, select, textarea { font-family: inherit; }
   gap: 8px;
 }
 
-/* Logo text stacking */
+/* Logo text — always stacked two lines */
 .logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 .logo-line1 {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  font-family: var(--font-accent);
 }
 .logo-line2 {
-  font-size: 0.62rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  opacity: 0.85;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-family: var(--font-body);
 }
 
-/* On larger screens, show inline in one line */
-@media (min-width: 769px) {
-  .logo-text {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.3em;
-  }
-  .logo-line1 { font-size: 1.5rem; }
-  .logo-line2 { font-size: 1.5rem; opacity: 1; }
+@media (min-width: 900px) {
+  .logo-line1 { font-size: 1.25rem; }
+  .logo-line2 { font-size: 0.65rem; }
 }
