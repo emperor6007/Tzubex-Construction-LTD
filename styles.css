@@ -872,18 +872,20 @@ input, select, textarea { font-family: inherit; }
 }
 .logo-line1 {
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.08em;
   color: var(--text-primary);
   font-family: var(--font-accent);
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .logo-line2 {
   font-size: 0.55rem;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
   font-family: var(--font-body);
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 @media (min-width: 900px) {
